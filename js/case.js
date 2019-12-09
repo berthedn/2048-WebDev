@@ -42,15 +42,21 @@ function CaseFusion(row1, col1, row2, col2) {
 	if (space[row2][col2]) {
 		return false;
 	}
-
+	
+	//Remove the old case
 	table[row2][col2].remove();
+	//Destination case take the value of original case
 	table[row2][col2] = table[row1][col1];
+	//Initialization of original case for the futur
 	table[row1][col1] = null;
+	//Adds up the number
 	var number = table[row2][col2].text() * 2;
+	//Assign the righ color
 	var color = pikColor(number);
+	
 	space[row2][col2] = true;
 
-	//Assign the CSS to the new case
+	//Assign the animation of merging (growing when merging and coming back when it's done)
 	table[row2][col2].css({
 		top : row2 * 100 + 'px',
 		left : col2 * 100 + 'px'
